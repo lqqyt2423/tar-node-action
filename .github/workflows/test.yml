@@ -8,14 +8,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: tar node
-      uses: lqqyt2423/tar-node-action@0.0.4
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.SSH_KEY }}
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
         config: ${{ secrets.SSH_CONFIG }}
+
+    - uses: actions/checkout@v2
+
+    - name: tar node
+      uses: lqqyt2423/tar-node-action@0.0.5
+      with:
         ssh_host: ${{ secrets.SSH_HOST }}
+
     - run: echo done
       env:
         CI: true
