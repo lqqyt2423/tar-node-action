@@ -9,12 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: pwd
-    - uses: lqqyt2423/tar-node-action@0.0.2
-    - run: type wget
-    - run: type curl
-    - run: type ssh
-    - run: type node
+    - uses: lqqyt2423/tar-node-action@0.0.3
     - run: echo done
       env:
         CI: true
