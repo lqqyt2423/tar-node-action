@@ -1,0 +1,14 @@
+name: test tar-node-action
+
+on: [push]
+
+jobs:
+  test-job:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: lqqyt2423/tar-node-action
+    - run: echo done
+      env:
+        CI: true
