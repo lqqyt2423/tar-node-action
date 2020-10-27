@@ -3,12 +3,12 @@ description: 'tar Node.js project'
 inputs:
   ssh_host:
     description: "ssh host which define in ssh_config to connect"
-    required: false
+    required: true
+  ssh_host_project_path:
+    description: "the project path on remote machine"
+    required: true
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/ssh.sh ${{ inputs.ssh_host }}
-      shell: bash
-
-    - run: ${{ github.action_path }}/main.sh
+    - run: ${{ github.action_path }}/main.sh ${{ inputs.ssh_host }} ${{ inputs.ssh_host_project_path }}
       shell: bash
