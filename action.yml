@@ -1,7 +1,31 @@
 name: 'tar node action'
 description: 'tar Node.js project'
+inputs:
+  ssh_key:
+    description: "SSH private key"
+    required: false
+  ssh_known_hosts:
+    description: "public keys of SSH servers"
+    required: false
+  ssh_config:
+    description: "SSH config"
+    required: false
+  ssh_host:
+    description: "ssh host which define in ssh_config to connect"
+    required: false
 runs:
   using: "composite"
   steps:
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      if: ${{ inputs.ssh_key && inputs.ssh_known_hosts && inputs.ssh_config && inputs.ssh_host }}
+      with:
+        key: ${{ inputs.ssh_key }}
+        known_hosts: ${{ inputs.ssh_known_hosts }}
+        config: ${{ inputs.ssh_config }}
+
+    - run: echo ssh_host ${{ inputs.ssh_host }}
+      shell: bash
+
     - run: ${{ github.action_path }}/main.sh
       shell: bash

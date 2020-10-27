@@ -9,7 +9,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: lqqyt2423/tar-node-action@0.0.3
+    - name: tar node
+      uses: lqqyt2423/tar-node-action@0.0.4
+      with:
+        key: ${{ secrets.SSH_KEY }}
+        known_hosts: ${{ secrets.KNOWN_HOSTS }}
+        config: ${{ secrets.SSH_CONFIG }}
+        ssh_host: ${{ secrets.SSH_HOST }}
     - run: echo done
       env:
         CI: true
