@@ -7,7 +7,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/ssh.sh
+    - run: ${{ github.action_path }}/ssh.sh ${{ inputs.ssh_host }}
       shell: bash
 
     - run: ${{ github.action_path }}/main.sh
