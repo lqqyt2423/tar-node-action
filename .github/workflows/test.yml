@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: tar node
-      uses: lqqyt2423/tar-node-action@0.0.5
+      uses: lqqyt2423/tar-node-action@0.0.6
       with:
         ssh_host: ${{ secrets.SSH_HOST }}
 
