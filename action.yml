@@ -1,0 +1,7 @@
+name: 'tar node action'
+description: 'tar Node.js project'
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/main.sh
+      shell: bash
