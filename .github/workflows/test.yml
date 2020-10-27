@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: lqqyt2423/tar-node-action@0.0.1
+    - run: pwd
+    - uses: lqqyt2423/tar-node-action@0.0.2
     - run: echo done
       env:
         CI: true
